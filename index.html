@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Página Web Bonita</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Variables de Color (¡fácil de personalizar!) --- */
+        :root {
+            --color-fondo: #f4f4f9;
+            --color-texto: #333333;
+            --color-primario: #7a0505; /* Un azul profesional */
+            --color-secundario: #ffffff;
+            --color-sombra: rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Estilos Generales --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Encabezado y Navegación --- */
+        .header {
+            background-color: var(--color-secundario);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px var(--color-sombra);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primario);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--color-texto);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primario);
+        }
+
+        /* --- Sección Principal (Hero) --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            min-height: 60vh;
+            background-color: var(--color-secundario);
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-primario);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: var(--color-secundario);
+            padding: 12px 25px;
+            border-radius: 50px; /* Botón píldora */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.4);
+        }
+
+        /* --- Sección de Características/Servicios --- */
+        .features-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--color-secundario);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--color-sombra);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h3 {
+            color: var(--color-primario);
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--color-primario);
+            margin-bottom: 20px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #2c3e50; /* Un color oscuro para contraste */
+            color: var(--color-secundario);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 40px;
+        }
+
+        /* ================================================= */
+        /* INICIO: ESTILOS DEL CHATBOT             */
+        /* ================================================= */
+
+       .chatbot-bubble {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    /* Usamos el degradado que configuramos antes */
+    background: rgb(red, green, blue); 
+    border-radius: 50%;
+    /* ----- LÍNEA AÑADIDA ----- */
+    border: 2px solid #000; /* Borde negro de 2px de grosor */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    z-index: 1001; /* Encima de todo */
+}
+
+        .chatbot-bubble:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-bubble .chat-icon {
+            width: 32px;
+            height: 32px;
+            fill: var(--color-secundario);
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            width: 350px;
+            height: 500px;
+            background-color: var(--color-secundario);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chat-window.open {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .chat-header {
+            background-color: var(--color-primario);
+            color: var(--color-secundario);
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .message.user {
+            background-color: #e6eaf0;
+            color: var(--color-texto);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.bot {
+            background-color: var(--color-primario);
+            color: var(--color-secundario);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-input-form {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .chat-input-form input {
+            flex-grow: 1;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            outline: none;
+        }
+        
+        .chat-input-form button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 10px;
+            fill: var(--color-primario);
+            transition: transform 0.2s ease;
+        }
+        
+        .chat-input-form button:hover {
+            transform: scale(1.1);
+        }
+
+        /* ================================================= */
+        /* FIN: ESTILOS DEL CHATBOT              */
+        /* ================================================= */
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="#" class="logo">MiLogo</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1>Diseño Moderno y Elegante</h1>
+                <p>Un punto de partida increíble para tu próximo proyecto web. Atractivo, responsivo y fácil de personalizar.</p>
+                <a href="#contacto" class="cta-button">¡Empecemos!</a>
+            </div>
+        </section>
+
+        <section class="features-section" id="servicios">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div> 
+                    <h3>Desarrollo Veloz</h3>
+                    <p>Creamos soluciones rápidas y eficientes adaptadas a tus necesidades.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Diseño Creativo</h3>
+                    <p>Interfaces intuitivas y atractivas que enamoran a tus usuarios.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>100% Responsivo</h3>
+                    <p>Tu web se verá perfecta en cualquier dispositivo, desde móviles hasta desktops.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" id="contacto">
+        <p>&copy; 2025 Tu Nombre o Empresa. Todos los derechos reservados.</p>
+        <p>Hecho con ❤️ en Bogotá.</p>
+    </footer>
+
+    <div class="chatbot">
+        <div class="chatbot-bubble" id="chatbot-bubble">    
+            <img src="https://fabricasoluciones.uniempresarial.edu.co/assets/fUSoft%20isotipo%207-CwDox1M9.png" alt="Logo fUSoft" class="chat-icon">
+        </div>
+
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                Asistente Virtual
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">¡Hola! ¿Cómo puedo ayudarte hoy?</div>
+            </div>
+            <form class="chat-input-form" id="chat-form">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+                <button type="submit">
+                    <svg height="24" viewBox="0 0 24 24" width="24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    <script>
+        const chatbotBubble = document.getElementById('chatbot-bubble');
+        const chatWindow = document.getElementById('chat-window');
+        
+        chatbotBubble.addEventListener('click', () => {
+            chatWindow.classList.toggle('open');
+        });
+        
+        const chatForm = document.getElementById('chat-form');
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const message = input.value;
+            if (!message.trim()) return; 
+
+            // Aquí conectarías la lógica para enviar el mensaje a n8n
+            console.log("Mensaje para enviar:", message); 
+            
+            // Simulación de añadir mensaje a la UI
+            const messagesContainer = document.getElementById('chat-messages');
+            const userMessageElem = document.createElement('div');
+            userMessageElem.className = 'message user';
+            userMessageElem.textContent = message;
+            messagesContainer.appendChild(userMessageElem);
+            
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        });
+    </script>
+    </body>
+</html>
